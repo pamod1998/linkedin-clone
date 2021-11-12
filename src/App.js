@@ -20,8 +20,8 @@ function App() {
           </Route>
 
           <Route path="/home">
-            <Home />
             <Header />
+            <Home />
           </Route>
         </Switch>
       </Router>
