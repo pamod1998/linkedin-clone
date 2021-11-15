@@ -2,24 +2,29 @@ import styled from "styled-components";
 import Leftside from "./Leftside";
 import Rightside from "./Rightside";
 import Main from "./Main";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
 const Home = (props) => {
   return (
     <Container>
-      <Section>
-        <h5>
-          <a>Develop new skills - </a>
-        </h5>
-        <p>
-          Millions of members use LinkedIn Learning. Unlock your free access
-          today.
-        </p>
-      </Section>
-      <Layout>
-        <Leftside />
-        <Main />
-        <Rightside />
-      </Layout>
+      {!props.user && <Redirect to="/" />}
+      <Content>
+        <Section>
+          <h5>
+            <a>Hiring in a hurray? - </a>
+          </h5>
+          <p>
+            Find talented pros in record time with LinkedIn and keep business
+            moving.
+          </p>
+        </Section>
+        <Layout>
+          <Leftside />
+          <Main />
+          <Rightside />
+        </Layout>
+      </Content>
     </Container>
   );
 };
@@ -35,8 +40,8 @@ const Content = styled.div`
 `;
 
 const Section = styled.section`
-  min-height: 50px;
-  padding: 16px 0;
+  /* min-height: 50px; */
+  /* padding: 16px 0; */
   box-sizing: content-box;
   text-align: center;
   text-decoration: underline;
@@ -79,4 +84,10 @@ const Layout = styled.div`
   }
 `;
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+  };
+};
+
+export default connect(mapStateToProps)(Home);
