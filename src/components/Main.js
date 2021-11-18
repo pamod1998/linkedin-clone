@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import PostModal from "./PostModal";
 import { useState, useEffect } from "react";
-import { getArticlesAPI, updateArticleAPI } from "../actions";
+import { getArticlesAPI } from "../actions";
 import { connect } from "react-redux";
 
 const Main = (props) => {
