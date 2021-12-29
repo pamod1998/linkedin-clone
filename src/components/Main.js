@@ -73,65 +73,66 @@ const Main = (props) => {
           </ShareBox>
           <Content>
             {props.loading && <img src="/images/spin-loader.gif" alt="" />}
-            {
-              <Article>
-                <SharedActor>
-                  <a>
-                    <img src="/images/user.svg" alt="" />
-                    <div>
-                      <span>Title</span>
-                      <span>Info</span>
-                      <span>Date</span>
-                    </div>
-                  </a>
-                  <button>
-                    <img src="/images/ellipses.svg" alt="" />
-                  </button>
-                </SharedActor>
-                <Description>Description</Description>
-                <SharedImg>
-                  <a>
-                    <img src="/images/shared-image.jpg" alt="" />
-                  </a>
-                </SharedImg>
-                <SocialCount>
-                  <li>
+            {props.articles.length > 0 &&
+              props.articles.map((article, key) => (
+                <Article key={key}>
+                  <SharedActor>
+                    <a>
+                      <img src={article.actor.image} alt="" />
+                      <div>
+                        <span>Title</span>
+                        <span>Info</span>
+                        <span>Date</span>
+                      </div>
+                    </a>
                     <button>
-                      <img
-                        src="https://static-exp1.licdn.com/sc/h/d310t2g24pvdy4pt1jkedo4yb"
-                        alt=""
-                      />
-                      <img
-                        src="https://static-exp1.licdn.com/sc/h/7fx9nkd7mx8avdpqm5hqcbi97"
-                        alt=""
-                      />
-                      <span>75</span>
+                      <img src="/images/ellipses.svg" alt="" />
                     </button>
-                  </li>
-                  <li>
-                    <a>2 comments</a>
-                  </li>
-                </SocialCount>
-                <SocialActions>
-                  <button>
-                    <img src="/images/like-icon.svg" alt="" />
-                    <span>Like</span>
-                  </button>
-                  <button>
-                    <img src="/images/comment-icon.svg" alt="" />
-                    <span>Comment</span>
-                  </button>
-                  <button>
-                    <img src="/images/share-icon.svg" alt="" />
-                    <span>Share</span>
-                  </button>
-                  <button>
-                    <img src="/images/send-icon.svg" alt="" />
-                    <span>Send</span>
-                  </button>
-                </SocialActions>
-              </Article>
-            }
+                  </SharedActor>
+                  <Description>Description</Description>
+                  <SharedImg>
+                    <a>
+                      <img src="/images/shared-image.jpg" alt="" />
+                    </a>
+                  </SharedImg>
+                  <SocialCount>
+                    <li>
+                      <button>
+                        <img
+                          src="https://static-exp1.licdn.com/sc/h/d310t2g24pvdy4pt1jkedo4yb"
+                          alt=""
+                        />
+                        <img
+                          src="https://static-exp1.licdn.com/sc/h/7fx9nkd7mx8avdpqm5hqcbi97"
+                          alt=""
+                        />
+                        <span>75</span>
+                      </button>
+                    </li>
+                    <li>
+                      <a>2 comments</a>
+                    </li>
+                  </SocialCount>
+                  <SocialActions>
+                    <button>
+                      <img src="/images/like-icon.svg" alt="" />
+                      <span>Like</span>
+                    </button>
+                    <button>
+                      <img src="/images/comment-icon.svg" alt="" />
+                      <span>Comment</span>
+                    </button>
+                    <button>
+                      <img src="/images/share-icon.svg" alt="" />
+                      <span>Share</span>
+                    </button>
+                    <button>
+                      <img src="/images/send-icon.svg" alt="" />
+                      <span>Send</span>
+                    </button>
+                  </SocialActions>
+                </Article>
+              ))}
           </Content>
 
           <PostModal showModal={showModal} handleClick={handleClick} />
